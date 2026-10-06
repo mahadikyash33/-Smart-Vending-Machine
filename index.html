@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Vending Machine - Mealy Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Vending Machine</h1>
+        <p>Mealy Machine Based Project</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Vending Machine -->
+        <section class="machine">
+
+            <div class="screen">
+                <h2 id="state">State: IDLE</h2>
+                <p id="message">Welcome! Select a product.</p>
+            </div>
+
+            <!-- Products -->
+            <h2>Select Product</h2>
+
+            <div class="products">
+
+                <div class="product">
+                    <h3>🥔 Chips</h3>
+                    <p>Price: ₹20</p>
+                    <p>Stock: <span id="stock0">5</span></p>
+                    <button onclick="selectProduct(0)">Select</button>
+                </div>
+
+                <div class="product">
+                    <h3>🍪 Biscuit</h3>
+                    <p>Price: ₹10</p>
+                    <p>Stock: <span id="stock1">5</span></p>
+                    <button onclick="selectProduct(1)">Select</button>
+                </div>
+
+                <div class="product">
+                    <h3>🥤 Coke</h3>
+                    <p>Price: ₹40</p>
+                    <p>Stock: <span id="stock2">5</span></p>
+                    <button onclick="selectProduct(2)">Select</button>
+                </div>
+
+                <div class="product">
+                    <h3>🧃 Juice</h3>
+                    <p>Price: ₹50</p>
+                    <p>Stock: <span id="stock3">5</span></p>
+                    <button onclick="selectProduct(3)">Select</button>
+                </div>
+
+            </div>
+
+            <!-- Payment -->
+            <div class="payment">
+
+                <h2>Payment</h2>
+
+                <p>
+                    Selected:
+                    <strong id="selected">None</strong>
+                </p>
+
+                <p>
+                    Price:
+                    <strong>₹<span id="price">0</span></strong>
+                </p>
+
+                <p>
+                    Balance:
+                    <strong>₹<span id="balance">0</span></strong>
+                </p>
+
+                <div class="payment-buttons">
+
+                    <button onclick="addMoney(10)">
+                        🪙 Coin ₹10
+                    </button>
+
+                    <button onclick="addMoney(20)">
+                        🪙 Coin ₹20
+                    </button>
+
+                    <button onclick="addMoney(50)">
+                        💵 Note ₹50
+                    </button>
+
+                    <button onclick="digitalPayment('RFID')">
+                        💳 RFID Card
+                    </button>
+
+                    <button onclick="digitalPayment('QR Code')">
+                        📱 QR Code
+                    </button>
+
+                    <button onclick="digitalPayment('Mobile Wallet')">
+                        📲 Mobile Wallet
+                    </button>
+
+                </div>
+
+                <div class="actions">
+                    <button class="cancel" onclick="cancelTransaction()">
+                        Cancel
+                    </button>
+
+                    <button class="buy" onclick="checkPayment()">
+                        Buy Product
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Mealy Machine Information -->
+        <section class="info">
+
+            <h2>Mealy Machine</h2>
+
+            <div class="state-box">
+                <h3>Current State</h3>
+                <div id="currentState">IDLE</div>
+            </div>
+
+            <h3>State Transition</h3>
+
+            <div class="transition">
+                <p>
+                    <strong>Current State:</strong>
+                    <span id="fromState">IDLE</span>
+                </p>
+
+                <p>
+                    <strong>Input:</strong>
+                    <span id="input">-</span>
+                </p>
+
+                <p>
+                    <strong>Output:</strong>
+                    <span id="output">-</span>
+                </p>
+
+                <p>
+                    <strong>Next State:</strong>
+                    <span id="nextState">IDLE</span>
+                </p>
+            </div>
+
+
+            <h3>Machine States</h3>
+
+            <div class="states">
+
+                <div id="idle" class="state active">
+                    IDLE
+                </div>
+
+                <div id="payment" class="state">
+                    PAYMENT
+                </div>
+
+                <div id="check" class="state">
+                    CHECK
+                </div>
+
+                <div id="dispense" class="state">
+                    DISPENSE
+                </div>
+
+                <div id="change" class="state">
+                    CHANGE
+                </div>
+
+            </div>
+
+
+            <h3>Transaction Output</h3>
+
+            <div id="log" class="log">
+                Machine ready...
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Smart Vending Machine | Mealy Machine | Theory of Computation</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
